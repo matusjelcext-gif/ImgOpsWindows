@@ -24,7 +24,7 @@ jobs:
 
       - name: Build EXE
         run: |
-          py -m PyInstaller --noconfirm --clean --onefile --windowed `
+          python -m PyInstaller --noconfirm --clean --onefile --windowed `
             --name "ImgOps" `
             --icon "icon.ico" `
             --add-data "images;images" `
