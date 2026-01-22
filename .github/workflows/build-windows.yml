@@ -17,16 +17,20 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install pyinstaller
-          python -m pip install --upgrade pip
-          python -m pip install pyinstaller
+          python -m pip install pyinstaller PyQt6 Pillow numpy requests
           python -m pip show pyinstaller
+          python -m pip show PyQt6
+          python -m pip show Pillow
+          python -m pip show numpy
+          python -m pip show requests
 
       - name: Build EXE
         run: |
           python -m PyInstaller --noconfirm --clean --onefile --windowed `
             --name "ImgOps" `
             --icon "icon.ico" `
+            --collect-all PyQt6 `
+            --hidden-import PyQt6.sip `
             --add-data "images;images" `
             --add-data "app.py;." `
             --add-data "app2.py;." `
